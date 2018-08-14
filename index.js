@@ -32,7 +32,7 @@ const categories = [
 
 (async () => {
   const query = new AV.Query('Post')
-  posts = await query.find()
+  const posts = await query.find()
   await AV.Object.destroyAll(posts)
 
   categories.map(async category => {
@@ -44,7 +44,7 @@ const categories = [
     })
 
     data.map(item => {
-      post = new Post()
+      const post = new Post()
       post.set('title', item.title.rendered)
       post.set('excerpt', striptags(item.excerpt.rendered))
       post.set('content', item.content.rendered)
